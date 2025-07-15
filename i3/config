@@ -141,7 +141,7 @@ mode "resize" {
 
 bindsym $mod+p mode "resize"
 
-# autotiling
+# autotiling, you need to have an autotiling script installed to use this
 
 exec_always --no-startup-id autotiling
 
