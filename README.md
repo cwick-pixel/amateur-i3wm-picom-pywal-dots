@@ -10,6 +10,9 @@ I only followed the directions relating in the Configuration section.
 Here is the github repo:
 https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/battery-combined-udev
 
+Make sure to install pywal, here is their github repo:
+https://github.com/dylanaraps/pywal
+
 Make sure that the file paths line up correctly! Failure to do so might lead to the rice not working correctly!
 
 Thank you! <3
