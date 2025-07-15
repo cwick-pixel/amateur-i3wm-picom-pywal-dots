@@ -1,0 +1,1 @@
+[ -f "${HOME}/.cache/wal/colors.Xresources" ] && xrdb -merge "${HOME}/.cache/wal/colors.Xresources"
