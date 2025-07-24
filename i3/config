@@ -1,23 +1,27 @@
+#using pywal colors
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+
 set $mod Mod4
 font pango:JetBrainsMonoNerdFontPropo 10
 
-# Window Colors
-set $bgcolor    #4F5152
-set $in-bgcolor #363636
-set $text       #ffffff
-set $u-bgcolor  #ff0000
-set $indicator  #a8a3c1
-set $in-text    #969696
-set $transparent #36363680
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
 
-#                       border          background      text            indicator (a line which shows where the next window will be placed)     
-client.focused          $bgcolor        $bgcolor        $text           $transparent
-client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
-client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
-client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor 
+for_window [class="Brave-browser"] border pixel 2
+for_window [class="kitty"] border pixel 2   
+for_window [class="obsidian"] border pixel 2
+for_window [class="mpv"] border pixel 2
+for_window [class="io.github.celluloid_player.Celluloid"] border pixel 2
+for_window [class="VSCodium"] border pixel 2
+default_border pixel 2
+default_floating_border pixel 2
 
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id nm-applet
 
 # pulsemixer
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -30,8 +34,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 # brightnessctl
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id brightnessctl set +100%
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id brightnessctl set 100%-
+bindsym $mod+Shift+Page_Up exec --no-startup-id brightnessctl set +100%
+bindsym $mod+Shift+Page_Down exec --no-startup-id brightnessctl set 100%-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -45,7 +49,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 
-bindsym $mod+r exec --no-startup-id rofi -show drun
+bindsym $mod+r exec --no-startup-id rofi -show drun -show-icons
 
 # change focus
 bindsym $mod+Left focus left
@@ -141,12 +145,19 @@ mode "resize" {
 
 bindsym $mod+p mode "resize"
 
-# autotiling, you need to have an autotiling script installed to use this
+# change screen orientation
+
+bindsym Ctrl+mod1+Right exec xrandr -o right
+bindsym Ctrl+mod1+Left exec xrandr -o left
+bindsym Ctrl+mod1+Down exec xrandr -o inverted
+bindsym Ctrl+mod1+Up exec xrandr -o normal
+
+# autotiling
 
 exec_always --no-startup-id autotiling
 
 # blueman-applet
-exec_always --no-startup-id blueman-applet
+#exec_always --no-startup-id blueman-applet
 
 # nitrogen
 exec_always --no-startup-id nitrogen --restore
@@ -160,7 +171,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # picom
 
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+exec_always --no-startup-id picom --config ~/.config/picom/picom-nofade-noanim.conf
 
 # brave
 
@@ -170,6 +181,8 @@ bindsym $mod+b exec --no-startup-id brave
 
 bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+Print exec --no-startup-id flameshot full --clipboard
+bindsym Shift+Page_Up exec --no-startup-id flameshot gui
+bindsym Ctrl+Shift+Page_Up exec --no-startup-id flameshot full --clipboard
 
 # power-manager
 
@@ -178,4 +191,3 @@ exec_always --nostartup-id xfce4-power-manager
 # kitty / xfce4-terminal
 
 bindsym $mod+Return exec ~/.local/kitty.app/bin/kitty
-#bindsym $mod+Return exec xfce4-terminal
