@@ -1,0 +1,43 @@
+#.bashrc alias for fastfetch and pywal color loading
+
+# Load pywal colors
+[ -f "$HOME/.cache/wal/colors.sh" ] && source "$HOME/.cache/wal/colors.sh"
+
+# fastfetch options (uncomment what fastfetch setting you want)
+
+#logos, big and small
+fastfetch --logo-padding-top 3
+
+#lolcat
+#fastfetch --logo-width 29 --logo-height 15 --logo-padding-right 5 --logo-padding-top 3 --logo ~/.config/fastfetch/ff.txt | lolcat
+
+#red
+#fastfetch --logo-width 35 --logo ~/Pictures/kitty-logos/rose.png
+
+#blue
+#fastfetch --logo-width 36 --logo-height 14 --logo ~/Pictures/kitty-logos/arch.png
+#fastfetch --logo-width 36 --logo-height 14 --logo ~/Pictures/kitty-logos/bordered-arch.png
+#fastfetch --logo-width 29 --logo-height 15 --logo-padding-left 6  --logo ~/Pictures/kitty-logos/squirtle3kb.png
+
+#purple
+#fastfetch --logo-padding-left 1 --logo ~/Pictures/kitty-logos/grape.png
+#fastfetch --logo-width 30 --logo-height 13 --logo-padding-left 4 --logo ~/Pictures/kitty-logos/gastly.png
+#fastfetch --logo-width 30 --logo-height 15 --logo-padding-left 3 --logo ~/Pictures/kitty-logos/mewtwo.png
+
+#alias
+alias anifetch="anifetch blue.mp4 -r 6 -W 45 -H 50 -C -c '--symbols all' -ff"
+alias unimatrix="unimatrix -a -b -c blue -f -s 97"
+alias pipes.sh="pipes.sh -t 0 -p 3 -c 4 -K"
+alias cbonsai="cbonsai -l --time=0.005 --infinite --wait=2 --multiplier=7 --life=65 --seed=200"
+alias .="cd .."
+alias lt="ls -a"
+alias clock='tty-clock -c -s -C 1 -b -t -f "%A, %B, %d, %Y"'
+alias loginwindow="sudo lightdm-settings" 
+alias terminal-rain="terminal-rain --rain-color white --lightning-color white"
+#alias cava-rs="exec ~/cava-rs"
+alias walcava='~/cava-rs; exec $SHELL'
+
+export EDITOR=nano
+export TERM=xterm
+
+#export POWERLINE_PROMPT="user_info cwd"
